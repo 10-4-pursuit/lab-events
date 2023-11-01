@@ -8,7 +8,7 @@
     "test": "cypress run"
   },
   "keywords": [],
-  "author": "",
+  "author": "Will Do",
   "license": "ISC",
   "devDependencies": {
     "cypress": "9.7.0",
