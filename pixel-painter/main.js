@@ -1,3 +1,7 @@
+/**
+ This section below, When a color is clicked in the `#palette`, the `#current-color` element should have its background changed to that color. 
+ For example, if you click the green circle in the `#palette`, the `#current-color` element's background should change to be green.
+
 const paletteElement = document.querySelector("#palette");
 
 // Add a click event listener to the `#palette` element.
@@ -19,8 +23,7 @@ paletteElement.addEventListener("click", function (event) {
 
 /**
  This section below creates a loop that would create 100 cells to the canvas
- 
-  */
+ */
 
 // Get the canvas element.
 const canvasElement = document.querySelector('#canvas');
@@ -34,12 +37,13 @@ for (let i = 0; i < 100; i++) {
   cellElement.classList.add('cell');
   documentFragment.appendChild(cellElement);
 }
-
 // Append the document fragment to the canvas element.
 canvasElement.appendChild(documentFragment);
 
 
-
+/**
+ This section below, when you click on a `.cell`, its background should change to match the background of `#current-color`.
+ */
 
 // Add a click event listener to the `#canvas` element.
 document.querySelector("#canvas").addEventListener("click", function (event) {
@@ -58,8 +62,31 @@ document.querySelector("#canvas").addEventListener("click", function (event) {
 });
 
 /**
- This section below is to change the event listener so that instead of clicking to fill a color, you hold down your trackpad.
+ This section below creates a button that, when clicked, resets all cells so that they all have a background of white
+ */
 
+ // Create a button element.
+const buttonElement = document.createElement('button');
+
+// Set the button element's text to "Reset".
+buttonElement.textContent = 'Reset';
+
+// Add the button element to the canvas element.
+canvasElement.appendChild(buttonElement);
+
+// Add a click event listener to the button element.
+buttonElement.addEventListener('click', function() {
+  // Get all the cell elements.
+  const cells = document.querySelectorAll('.cell');
+
+  // Loop through all the cell elements and set their background color to white.
+  for (const cell of cells) {
+    cell.style.backgroundColor = 'white';
+  }
+});
+
+/**
+ BONUSSS--This section below is to change the event listener so that instead of clicking to fill a color, you hold down your trackpad.
  */
 
 // Add a mousedown event listener to the canvas element.
@@ -90,11 +117,8 @@ canvasElement.addEventListener('mousedown', function(event) {
       }
     });
 
-    // Add a mouseup event listener to the canvas element.
-    canvasElement.addEventListener('mouseup', function(event) {
-      // Remove the mousemove event listener from the canvas element.
-      canvasElement.removeEventListener('mousemove', function(event) {});
-
+    // Add a touchend event listener to the canvas element.
+    canvasElement.addEventListener('touchend', function(event) {
       // Stop filling the cell with the current color.
       targetElement.style.backgroundColor = null;
     });
