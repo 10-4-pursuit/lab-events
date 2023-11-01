@@ -57,5 +57,46 @@ document.querySelector("#canvas").addEventListener("click", function (event) {
 }
 });
 
+/**
+ This section below is to change the event listener so that instead of clicking to fill a color, you hold down your trackpad.
 
+ */
 
+// Add a mousedown event listener to the canvas element.
+canvasElement.addEventListener('mousedown', function(event) {
+  // Get the target element of the event.
+  const targetElement = event.target;
+
+  // If the target element is a `.cell` element, start filling the cell with the current color.
+  if (targetElement.classList.contains('cell')) {
+    // Prevent the default behavior of the click event.
+    event.preventDefault();
+
+    // Start filling the cell with the current color.
+    targetElement.style.backgroundColor = document.querySelector('#current-color').style.backgroundColor;
+
+    // Add a mousemove event listener to the canvas element.
+    canvasElement.addEventListener('mousemove', function(event) {
+      // Get the current position of the mouse.
+      const mouseX = event.clientX;
+      const mouseY = event.clientY;
+
+      // Get the cell element at the current mouse position.
+      const cellElement = document.elementFromPoint(mouseX, mouseY);
+
+      // If the cell element is not null, fill it with the current color.
+      if (cellElement !== null) {
+        cellElement.style.backgroundColor = document.querySelector('#current-color').style.backgroundColor;
+      }
+    });
+
+    // Add a mouseup event listener to the canvas element.
+    canvasElement.addEventListener('mouseup', function(event) {
+      // Remove the mousemove event listener from the canvas element.
+      canvasElement.removeEventListener('mousemove', function(event) {});
+
+      // Stop filling the cell with the current color.
+      targetElement.style.backgroundColor = null;
+    });
+  }
+});
