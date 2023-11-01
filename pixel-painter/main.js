@@ -16,12 +16,37 @@ paletteElement.addEventListener("click", function (event) {
   }
 });
 
+
+/**
+ This section below creates a loop that would create 100 cells to the canvas
+ 
+  */
+
+// Get the canvas element.
+const canvasElement = document.querySelector('#canvas');
+
+// Create a document fragment to store the cells.
+const documentFragment = document.createDocumentFragment();
+
+// Create 100 cells and append them to the document fragment.
+for (let i = 0; i < 100; i++) {
+  const cellElement = document.createElement('div');
+  cellElement.classList.add('cell');
+  documentFragment.appendChild(cellElement);
+}
+
+// Append the document fragment to the canvas element.
+canvasElement.appendChild(documentFragment);
+
+
+
+
 // Add a click event listener to the `#canvas` element.
 document.querySelector("#canvas").addEventListener("click", function (event) {
   try {
     const targetElement = event.target;
 
-  if (targetElement.classList.contains("#canvas")) {
+  if (targetElement.classList.contains("cell")) {
     const backgroundColor =
       document.querySelector("#current-color").style.backgroundColor;
 
@@ -32,29 +57,5 @@ document.querySelector("#canvas").addEventListener("click", function (event) {
 }
 });
 
-// const cellElement = document.querySelector("#canvas");
-// cellElement.addEventListener("click", function (component) {
-//   const targetComponent = component.target;
 
-//   if (targetComponent.classList.contains("cell")) {
-//     const bgColor =
-//       document.querySelector("#current-color").style.backgroundColor;
 
-//     targetComponent.style.backgroundColor = bgColor;
-//   }
-
-//   document.querySelector("#canvas").addEventListener("click", function (event) {
-//     try {
-//     const targetElement = event.target;
-
-//     if (targetElement.classList.contains('cell')) {
-//       const backgroundColor =
-//         document.querySelector("#current-color").style.backgroundColor;
-
-//       targetElement.style.backgroundColor = backgroundColor;
-//     }
-// } catch (error) {
-//     console.log(error)
-// }
-//   });
-// });

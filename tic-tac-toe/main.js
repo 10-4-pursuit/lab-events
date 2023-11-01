@@ -8,6 +8,16 @@ function makeBoard(){
   
       board.appendChild(square);
     }
-  
+ 
     return board;
   }
+
+  // Add an event listener to the window object for the 'load' event.
+window.addEventListener('load', function() {
+    // Call the makeBoard() function and append the board to the DOM.
+    const board = makeBoard();
+    document.body.appendChild(board);
+
+    console.log("this is addEventListener")
+   
+  });
