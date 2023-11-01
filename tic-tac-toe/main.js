@@ -1,23 +1,60 @@
-function makeBoard(){
-    const board = document.createElement('div');
-    board.classList.add('tic-tac-toe');
-  
-    for (let i = 0; i < 9; i++) {
-      const square = document.createElement('div');
-      square.classList.add('square', 'empty');
-  
-      board.appendChild(square);
+/**
+ The section below creates a player "x"
+ */
+//  const displayElement = document.createElement('section');
+//  displayElement.classList.add('display');
+
+//  const playerSpan = document.createElement('span');
+//  playerSpan.classList.add('display-player');
+//  playerSpan.classList.add('playerX');
+//  playerSpan.textContent = 'X';
+
+//  displayElement.appendChild(playerSpan);
+
+//  const ticTacToeElement = document.querySelector('.tic-tac-toe');
+//  ticTacToeElement.appendChild(displayElement);
+
+function makeBoard() {
+  const board = document.createElement("div");
+  board.classList.add("board");
+
+  for (let i = 0; i < 3; i++) {
+    const row = document.createElement("div");
+    row.classList.add("row");
+
+    // Create a new element with the class "square".
+    for (let j = 0; j < 3; j++) {
+      const squareElement = document.createElement("div");
+      squareElement.classList.add("square");
+      squareElement.classList.add("empty");
+
+      squareElement.addEventListener("click", () => {
+        console.log("this is working!");
+      });
+
+      row.appendChild(squareElement);
     }
- 
-    return board;
+    Ï;
+
+    board.appendChild(row);
   }
 
-  // Add an event listener to the window object for the 'load' event.
-window.addEventListener('load', function() {
-    // Call the makeBoard() function and append the board to the DOM.
-    const board = makeBoard();
-    document.body.appendChild(board);
+  // Append the square element to the "tic-tac-toe" element.
+  const ticTacToeElement = document.querySelector(".tic-tac-toe");
+  ticTacToeElement.appendChild(board);
 
-    console.log("this is addEventListener")
-   
-  });
+  board.style.display = "grid";
+  // board.style.gridTemplateColumns = '3fr';
+  board.style.maxWidth = "300px";
+  // board.style.gridTemplateRows = "3fr";
+  board.style.justifyContent = "center";
+  board.style.alignItems = "left";
+  board.style.margin = "0 auto";
+
+  return board;
+}
+
+window.onload = function () {
+  const board = makeBoard();
+
+};

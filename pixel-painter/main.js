@@ -1,7 +1,7 @@
 /**
  This section below, When a color is clicked in the `#palette`, the `#current-color` element should have its background changed to that color. 
  For example, if you click the green circle in the `#palette`, the `#current-color` element's background should change to be green.
-
+*/
 const paletteElement = document.querySelector("#palette");
 
 // Add a click event listener to the `#palette` element.
