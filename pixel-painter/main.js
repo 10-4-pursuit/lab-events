@@ -18,7 +18,7 @@ for (let i = 0; i < 100; i++) {
 }
 
 palette.addEventListener("click", (event) => {
-  event.target.classList.contains("color");
+  palette.classList.contains("color");
   const color = event.target.style.backgroundColor;
   currentColor.style.backgroundColor = color;
 });
