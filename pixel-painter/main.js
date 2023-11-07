@@ -1,7 +1,7 @@
 const pointerColor = document.querySelectorAll(".color")
 
 document.querySelector("#current-color")
-// change the event listener to mousedown instead of click to fill a color in the cell?
+
 for (let colorElement of pointerColor) {
     colorElement.addEventListener("click", () => {
         const currentColor = document.querySelector("#current-color")
@@ -9,7 +9,6 @@ for (let colorElement of pointerColor) {
         currentColor.style.background = colorElement.style.background
     });
 }
-// here we named our variable, which points to where in the html we are addressing.
 const canvas = document.querySelector("#canvas");
 
 for (let i = 0; i < 100; i++) {
