@@ -20,26 +20,24 @@ paletteElement.addEventListener("click", function (event) {
   }
 });
 
-
 /**
  This section below creates a loop that would create 100 cells to the canvas
  */
 
 // Get the canvas element.
-const canvasElement = document.querySelector('#canvas');
+const canvasElement = document.querySelector("#canvas");
 
 // Create a document fragment to store the cells.
 const documentFragment = document.createDocumentFragment();
 
 // Create 100 cells and append them to the document fragment.
 for (let i = 0; i < 100; i++) {
-  const cellElement = document.createElement('div');
-  cellElement.classList.add('cell');
+  const cellElement = document.createElement("div");
+  cellElement.classList.add("cell");
   documentFragment.appendChild(cellElement);
 }
 // Append the document fragment to the canvas element.
 canvasElement.appendChild(documentFragment);
-
 
 /**
  This section below, when you click on a `.cell`, its background should change to match the background of `#current-color`.
@@ -50,38 +48,38 @@ document.querySelector("#canvas").addEventListener("click", function (event) {
   try {
     const targetElement = event.target;
 
-  if (targetElement.classList.contains("cell")) {
-    const backgroundColor =
-      document.querySelector("#current-color").style.backgroundColor;
+    if (targetElement.classList.contains("cell")) {
+      const backgroundColor =
+        document.querySelector("#current-color").style.backgroundColor;
 
-    targetElement.style.backgroundColor = backgroundColor;
+      targetElement.style.backgroundColor = backgroundColor;
+    }
+  } catch (error) {
+    console.log(error);
   }
-} catch (error){
-    console.log(error)
-}
 });
 
 /**
  This section below creates a button that, when clicked, resets all cells so that they all have a background of white
  */
 
- // Create a button element.
-const buttonElement = document.createElement('button');
+// Create a button element.
+const buttonElement = document.createElement("button");
 
 // Set the button element's text to "Reset".
-buttonElement.textContent = 'Reset';
+buttonElement.textContent = "Reset";
 
 // Add the button element to the canvas element.
 canvasElement.appendChild(buttonElement);
 
 // Add a click event listener to the button element.
-buttonElement.addEventListener('click', function() {
+buttonElement.addEventListener("click", function () {
   // Get all the cell elements.
-  const cells = document.querySelectorAll('.cell');
+  const cells = document.querySelectorAll(".cell");
 
   // Loop through all the cell elements and set their background color to white.
   for (const cell of cells) {
-    cell.style.backgroundColor = 'white';
+    cell.style.backgroundColor = "white";
   }
 });
 
@@ -90,20 +88,21 @@ buttonElement.addEventListener('click', function() {
  */
 
 // Add a mousedown event listener to the canvas element.
-canvasElement.addEventListener('mousedown', function(event) {
+canvasElement.addEventListener("mousedown", function (event) {
   // Get the target element of the event.
   const targetElement = event.target;
 
   // If the target element is a `.cell` element, start filling the cell with the current color.
-  if (targetElement.classList.contains('cell')) {
+  if (targetElement.classList.contains("cell")) {
     // Prevent the default behavior of the click event.
     event.preventDefault();
 
     // Start filling the cell with the current color.
-    targetElement.style.backgroundColor = document.querySelector('#current-color').style.backgroundColor;
+    targetElement.style.backgroundColor =
+      document.querySelector("#current-color").style.backgroundColor;
 
     // Add a mousemove event listener to the canvas element.
-    canvasElement.addEventListener('mousemove', function(event) {
+    canvasElement.addEventListener("mousemove", function (event) {
       // Get the current position of the mouse.
       const mouseX = event.clientX;
       const mouseY = event.clientY;
@@ -113,12 +112,13 @@ canvasElement.addEventListener('mousedown', function(event) {
 
       // If the cell element is not null, fill it with the current color.
       if (cellElement !== null) {
-        cellElement.style.backgroundColor = document.querySelector('#current-color').style.backgroundColor;
+        cellElement.style.backgroundColor =
+          document.querySelector("#current-color").style.backgroundColor;
       }
     });
 
     // Add a touchend event listener to the canvas element.
-    canvasElement.addEventListener('touchend', function(event) {
+    canvasElement.addEventListener("touchend", function (event) {
       // Stop filling the cell with the current color.
       targetElement.style.backgroundColor = null;
     });

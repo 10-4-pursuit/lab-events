@@ -1,60 +1,66 @@
-/**
- The section below creates a player "x"
- */
-//  const displayElement = document.createElement('section');
-//  displayElement.classList.add('display');
 
-//  const playerSpan = document.createElement('span');
-//  playerSpan.classList.add('display-player');
-//  playerSpan.classList.add('playerX');
-//  playerSpan.textContent = 'X';
+let isPlayerXTurn = true;
 
-//  displayElement.appendChild(playerSpan);
 
-//  const ticTacToeElement = document.querySelector('.tic-tac-toe');
-//  ticTacToeElement.appendChild(displayElement);
-
+//function below makes the Tic Toe Toe Board
 function makeBoard() {
-  const board = document.createElement("div");
-  board.classList.add("board");
+  const board = document.createElement("div"); //create dive element
+  board.classList.add("board"); //add a class called "board" to to div element
 
+  //this create a row
   for (let i = 0; i < 3; i++) {
     const row = document.createElement("div");
     row.classList.add("row");
 
-    // Create a new element with the class "square".
+    // Create a new element with the class "square"
     for (let j = 0; j < 3; j++) {
       const squareElement = document.createElement("div");
       squareElement.classList.add("square");
       squareElement.classList.add("empty");
+      squareElement.addEventListener("click", () => makeMove()); //this calls makeMove function
 
-      squareElement.addEventListener("click", () => {
-        console.log("this is working!");
-      });
-
-      row.appendChild(squareElement);
+      row.appendChild(squareElement);// this gets attached to "row"
     }
-    Ï;
+    board.appendChild(row); //this gets attached to "board"
 
-    board.appendChild(row);
+    // Append the square element to the "tic-tac-toe" element
+    const ticTacToeElement = document.querySelector(".tic-tac-toe"); // this selects the class
+    ticTacToeElement.appendChild(board); //this gets attached to "tic tac toe"
+
+    //this creates the style for the board 
+    board.style.display = "grid";
+    board.style.maxWidth = "300px";
+    board.style.justifyContent = "center";
+    board.style.alignItems = "left";
+    board.style.margin = "0 auto";
   }
-
-  // Append the square element to the "tic-tac-toe" element.
-  const ticTacToeElement = document.querySelector(".tic-tac-toe");
-  ticTacToeElement.appendChild(board);
-
-  board.style.display = "grid";
-  // board.style.gridTemplateColumns = '3fr';
-  board.style.maxWidth = "300px";
-  // board.style.gridTemplateRows = "3fr";
-  board.style.justifyContent = "center";
-  board.style.alignItems = "left";
-  board.style.margin = "0 auto";
-
   return board;
 }
 
 window.onload = function () {
   const board = makeBoard();
-
 };
+
+
+//this function controls the logic behind placing x's and o's
+function makeMove() {
+  //Checks if the clicked square has the class `empty
+  const square = event.target;
+console.log(square)
+
+
+
+  if (square.classList.contains("empty")) {
+    square.innerText = isPlayerXTurn ? "x": "o"
+    square.classList.remove("empty")
+    isPlayerXTurn = !isPlayerXTurn //toggling is happening here
+  }
+}
+
+/** const isValidAction = (tile) => {
+  //         if (tile.innerText === 'X' || tile.innerText === 'O'){
+  //             return false;
+  //         } //this makes the player actions are valid
+  
+  //         return true;
+  //     }; */
