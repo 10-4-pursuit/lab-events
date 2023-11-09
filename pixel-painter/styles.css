@@ -20,6 +20,7 @@ header,
 footer {
   background: #7e7f9a;
   color: white;
+  margin-top: 25px;
 }
 
 header h1 {
@@ -58,6 +59,7 @@ header h1 {
   margin: 25px auto;
   text-align: center;
   width: 80%;
+  margin-bottom: 90px;
 }
 
 #palette .color {
