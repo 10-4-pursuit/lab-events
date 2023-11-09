@@ -89,3 +89,15 @@ a:hover {
   background-color: blanchedalmond;
   opacity: 0.5;
 }
+
+footer {
+  margin-top: 140px;
+}
+
+section#button-container {
+  text-align: center;
+}
+
+section#change-all-button {
+  text-align: center;
+}

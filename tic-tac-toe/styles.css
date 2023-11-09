@@ -47,6 +47,13 @@ h1 {
 #wrapper {
   min-height: 90%;
   margin-bottom: -100px;
+  display: grid;
+  grid-template-columns: 3;
+  grid-template-rows: 3;
+  height: 500px;
+  margin: 0 auto;
+  width: 500px;
+  
 }
 
 nav {
@@ -62,6 +69,10 @@ button {
   display: block;
   margin: auto;
   background: plum;
+}
+
+.button-location {
+  margin-bottom: 250px;
 }
 
 a {
