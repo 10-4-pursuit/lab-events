@@ -41,7 +41,7 @@ Attempt to implement _at least one_ of the following features:
 - [ ] Create a button that, when clicked, resets all cells so that they all have a background of white.
 - [ ] Create a button that, when clicked, changes all of the cells so that they match the `#current-color` element's background.
 
-Feel free to add other fun features to build out your pixel painter!
+Feel free to add other fun features to build out your pixel painter!()
 
 ### Tic Tac Toe
 
